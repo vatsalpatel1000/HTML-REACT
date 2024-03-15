@@ -1,4 +1,57 @@
-h1 {
+/* h1 {
             color: red;
             background-color: black;
+}
+
+p{
+    color: green; 
+    background-color: cornflowerblue;
+}
+
+button{
+    color: gold;
+    background-color: black;
+} 
+*/
+
+/* TextProperty.html */
+ h1 {                            /* H1 is related to border */
+    text-align: right;     /*  THis is change according to border if width given 50% than h1 take 50 % of page and text will showes automatically on center */
+    border: solid black;
+    width: 50%;
+    color: rgb(0, 255, 123);
+    /* background-color: black; */
+}
+/* Text_decoration */
+h2{
+    text-align: center;
+    text-decoration: underline; 
+}
+/* Text_decoration */
+h3{
+    text-align: center;
+    text-decoration: line-through; 
+    /* text-decoration: overline;  */
+}
+
+/* Font_Property.html */
+p{
+    font-weight: bold;
+    color: rgb(128, 55, 0); 
+    font-size: 20px; 
+    font-family: 'impact';
+    /* background-color: cornflowerblue; */
+}
+
+/* line-height & letter-spacing */
+p1{
+    font-weight: bold;
+    color: rgb(128, 12, 128); 
+    line-height: 2.5;
+    letter-spacing: 10px;
+}
+
+    button{
+    color: gold;
+    background-color: black;
 }

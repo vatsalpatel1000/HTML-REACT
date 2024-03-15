@@ -1,0 +1,15 @@
+h1{
+    color: orange;
+    background-color: rgb(128,128,128);
+}
+button{
+    color: white; 
+    /* color: rgb(255,0,0);            RGB COLOR PROPERTY */
+    /* color: #ffffff;                  HEXA CODE System      */
+    background-color: blue;
+
+}
+h2{
+    color: white; 
+    background-color: #000000;
+}
