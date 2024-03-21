@@ -1,0 +1,52 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    /* background-color: brown; */
+}
+
+h1 ,h3 ,h2, p{
+    color: purple;
+}
+
+/* 
+h3{
+    color: rgb(92, 128, 0);
+} */
+
+
+#login{                                                          /*       ID's are use with # operator    */
+    color: brown;
+    background-color: blue;
+}
+
+#signup{
+    color: brown;
+    background-color: blue;
+}
+
+ .Vat{                                                          /*       classes are use with . operator    */
+    color: rgb(43, 226, 67);
+}
+
+#myid p{                                                        /*       For all <p> its purpel but for myid p it will be yellow bz we mentation  */
+    color: darkslategray;
+}
+
+                                                                            /* Descendent selectot */
+.post a{
+    color: red;
+    background-color: aquamarine;
+}
+
+nav ul li a{
+      color: pink;
+}
+                                                                            /* After <p> all <h3> tag will change or call in this css */
+p + h3{                                             
+    color: mediumslateblue;
+    text-decoration:underline;
+}
+
+.Vat + button{
+    background-color: brown;
+    color: #000;
+}
