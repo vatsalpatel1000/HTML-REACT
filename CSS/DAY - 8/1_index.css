@@ -19,7 +19,10 @@ div{
     transition-delay: 1s;                                            delay the transation of div for 1sec.         */
     margin: 0 auto;                                                 /* center the */
     transition:  margin-top 2s ease-in 0.2s ;
-    transition-
+    transition-timing-function: 2s;
+    transition-timing-function: ease-in;
+    transition-delay:0.2s ;
+
 }
 div:hover{
     background-color: green;
