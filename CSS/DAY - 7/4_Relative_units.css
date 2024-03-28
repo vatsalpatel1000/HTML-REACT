@@ -1,0 +1,28 @@
+#outer{
+    height: 400px;
+    width: 400px;
+    border: 2px solid black;
+    background-color: pink;
+    font-size: 10px;                                /* if font property is given to outer div than it will also apply on inner child div*/
+}
+
+#inner {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    font-size: 3em;                                 /* if we want different property from parent than will give this for double of parent property 
+                                                                    em = double of parent property */ 
+    padding: 1em;
+    } 
+
+button{
+    font-size: 15px;
+    border-radius: 15px;
+    border: 2px solid green;
+    padding-left: 1em;
+    padding-right: 1em;                             /* em use for prapotnale of font-size */
+}    
+
+div{
+    font-size: 2em;
+}

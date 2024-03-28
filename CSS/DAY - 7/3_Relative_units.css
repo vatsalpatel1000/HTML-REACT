@@ -14,5 +14,5 @@ h1{
     height: 100px;
     width: 100px;
     background-color: green;
-     margin: 50%;                       /* this wll respect to parent block 400px of 50% & used in only for child element denote for parent element  */
+     margin: 50%;                       /* % this wll respect to parent block 400px of 50% & used in only for child element denote for parent element  */
 }

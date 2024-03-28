@@ -1,0 +1,25 @@
+#box{
+    height: 150px;
+    width: 300px;
+    background-color: gray;
+    border: 2px dotted black;
+    margin-top: 20px;
+    margin-right: 1em;
+    margin-bottom: 40px;
+    margin-left: 2em;
+    padding: 1em;
+}
+
+.top{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    border: 2px solid black;
+    border-radius: 50%;
+
+}
+
+li {
+    display: inline;                        /* display all ui element in one line */
+    }
