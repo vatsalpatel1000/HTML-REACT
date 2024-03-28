@@ -1,15 +1,16 @@
-h1{
-    color: orange;
-    background-color: rgb(128,128,128);
+*{
+    font-family: 'Courier New', Courier, monospace;
 }
-button{
-    color: white; 
-    /* color: rgb(255,0,0);            RGB COLOR PROPERTY */
-    /* color: #ffffff;                  HEXA CODE System      */
-    background-color: blue;
 
+h1{
+    color: #1b74e4;
 }
-h2{
-    color: white; 
-    background-color: #000000;
+
+#searchbtn{
+    color: white;
+    background-color: black;
+}
+
+.userbtn{
+    background-color: aqua;
 }

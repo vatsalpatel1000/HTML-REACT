@@ -1,12 +1,38 @@
-h1{
-    font-family: 'league spartan','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #ffa511;
-    text-align: center;
-    font-size: 50px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    line-height: 1.5x;
-    text-decoration: teal double underline;
-    text-transform: uppercase;
-     
-}
+    #mainTopic{
+        color: blue;
+    }
+
+    *{
+        text-align: center;
+    }
+
+    h1, h3,h2,h5{
+        font-family: Georgia;
+    }
+
+    .content{
+        color: white;
+        background-color: cornflowerblue;
+    }
+
+    div button{
+        background-color: purple;
+        color: azure;
+    }
+
+    button:hover{
+        color: blue;
+        background-color: yellow;
+    }
+
+    p:nth-of-type(2){
+        column-rule: yellow;
+    }
+
+    h1::first-letter{
+        color: red;
+    }
+
+    #yes:checked + lebel {
+        color: darkgreen;
+    }

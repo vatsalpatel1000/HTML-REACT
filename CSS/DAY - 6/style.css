@@ -1,57 +1,108 @@
-/* h1 {
-            color: red;
-            background-color: black;
+*{
+    font-family: 'Courier New', Courier, monospace;
+    /* background-color: brown; */
 }
 
-p{
-    color: green; 
-    background-color: cornflowerblue;
+h1 ,h3 ,h2, p{
+    color: purple;
 }
 
-button{
-    color: gold;
-    background-color: black;
-} 
-*/
-
-/* TextProperty.html */
- h1 {                            /* H1 is related to border */
-    text-align: right;     /*  THis is change according to border if width given 50% than h1 take 50 % of page and text will showes automatically on center */
-    border: solid black;
-    width: 50%;
-    color: rgb(0, 255, 123);
-    /* background-color: black; */
-}
-/* Text_decoration */
-h2{
-    text-align: center;
-    text-decoration: underline; 
-}
-/* Text_decoration */
+/* 
 h3{
-    text-align: center;
-    text-decoration: line-through; 
-    /* text-decoration: overline;  */
+    color: rgb(92, 128, 0);
+} */
+
+#login{                                                          /*       ID's are use with # operator    */
+    color: brown;
+    background-color: blue;
 }
 
-/* Font_Property.html */
-p{
-    font-weight: bold;
-    color: rgb(128, 55, 0); 
-    font-size: 20px; 
-    font-family: 'impact';
-    /* background-color: cornflowerblue; */
+#signup{
+    color: brown;
+    background-color: blue;
 }
 
-/* line-height & letter-spacing */
-p1{
-    font-weight: bold;
-    color: rgb(128, 12, 128); 
-    line-height: 2.5;
-    letter-spacing: 10px;
+ .Vat{                                                          /*       classes are use with . operator    */
+    color: rgb(43, 226, 67);
 }
 
-    button{
-    color: gold;
+#myid p{                                                        /*       For all <p> its purpel but for myid p it will be yellow bz we mentation  */
+    color: darkslategray;
+}
+
+                                                                            /* Descendent selectot */
+.post a{
+    color: red;
+    background-color: aquamarine;
+}
+
+nav ul li a{
+      color: pink;
+}
+                                                                            /* After <p> all <h3> tag will change or call in this css */
+p + h3{                                             
+    color: mediumslateblue;
+    text-decoration:underline;
+}
+
+.Vat + button{
+    background-color: brown;
+    color: #000;
+}
+
+div > input{                        
+    background-color: gray;
+    color: white;
+} 
+
+input [type ="text"]{                                                       /* Change the text  for specific input type */
+    color:  red;
+}
+
+input [type ="password"]{                                                   /* Change the Password for specific input type */
+    color: springgreen;
+} 
+
+input [type ]{
+    color: springgreen;
+} 
+
+button:hover{                                                                /* change color of button according to cursor */ 
     background-color: black;
+    color: white;
+}
+
+h3:hover{                                                                   /* change color of Text  according to cursor */ 
+    text-decoration: none;                                                   /* remove underline according to cursor */ 
+}
+
+button:active{                                                                /* change color of button color when clickon it  */ 
+    background-color: orange;
+    color: black;
+}
+
+p : active{                                                                 /* change color of [p] color when clickon it  */
+    font-weight: bold;
+    background-color: teal;
+}
+
+input[type = "radio"]:checked + label {                                     /* change color of ratio button/ checkbox color when clickon it  */
+    color: red;
+    font-weight: bold;
+}
+
+div:nth-of-type(3n ){                                                       /* change div or class color base on no or nth no.  */
+    background-color: red;
+}
+
+h1::first-letter{
+    color: #000 ;
+}
+
+p::first-line{
+    color: green;
+}
+
+p::selection{
+    color: yellowgreen;
 }

@@ -1,0 +1,20 @@
+/* h2{                                                  change the nature of block element to span element  
+    display :inline-block;
+} */
+
+/* span{
+    display: block;                                      change the nature for span to block*/
+   /* background-color: pink;
+    border: 2px solid black;
+} */
+
+span{                                           /*          Span will not take extra space on page  but div element will cover whole block element  */
+    /* background-color: pink; */
+    border: 2px solid black;
+    padding: 50px;
+     margin: 50px;                                       /*with span element pandding and margin will work height and width will not work */
+}
+
+#third{
+     display: none;                                      /* Display:none will not shown in display */
+}
