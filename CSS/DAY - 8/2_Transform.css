@@ -41,5 +41,5 @@ div:nth-of-type(3n){
 }
 
 #five{                                               /*skew div  teda div   */
-    transform:rotate(30deg) skew(30deg)
+    transform:rotate(30deg) skew(30deg) translate(100px,200px)
 }
