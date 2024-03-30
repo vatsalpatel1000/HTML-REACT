@@ -1,0 +1,45 @@
+section{
+    margin-top: 100px;
+}
+
+div{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: green;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+div:nth-of-type(2n){
+    background-color: yellow;
+}
+
+div:nth-of-type(3n){
+    background-color: darkgrey;
+}
+
+/*transform*/
+#one{
+    transform:rotate(145deg)                        /*rotate div*/
+}
+
+#two{                                               /*scale div    where 0.5 = half of div property   2 = double of div propety*/
+    transform:scale(1.5)
+}
+
+#two{                                               /*scale div    where 0.5 = half of div property   2 = double of div propety in for of x and y*/
+    transform:scale(1.5,2)
+}
+
+#third{                                               /*translate div    shift div x from 100px and shift y sid 200px */
+    transform:translate(100px,200px)
+}
+
+#four{                                               /*skew div  teda div   */
+    transform:skew(30deg)
+}
+
+#five{                                               /*skew div  teda div   */
+    transform:rotate(30deg) skew(30deg)
+}
