@@ -21,7 +21,7 @@ div{
     transition:  margin-top 2s ease-in 0.2s ;
     transition-timing-function: 2s;
     transition-timing-function: ease-in;
-    transition-delay:0.2s ;
+    transition-delay: 0.2s ;
 
 }
 div:hover{
