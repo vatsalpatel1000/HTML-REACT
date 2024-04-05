@@ -1,10 +1,11 @@
 #container{
     height: 300px;
-    width: 80%;
+    width: 50%;
     background-color: white;
-    margin: 10px auto;
+    margin: 10px auto;                          /* auto menas center here*/
     border: 2px solid black;
     display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: column-reverse;                     /* Change flex direction form row to colum*/
 }
 
 h1{
