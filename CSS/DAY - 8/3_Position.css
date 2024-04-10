@@ -27,7 +27,7 @@ div{
     position: absolute ;
     top: 100px;
     bottom: 100px;
- }
+}
 
 #fixed{                                                 /* div goes with screen scrol from page top to bottom*/
     background-color: yellow;

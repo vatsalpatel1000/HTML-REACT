@@ -5,7 +5,7 @@
     margin: 10px auto;                          /* auto menas center here*/
     border: 2px solid black;
     display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
-    flex-direction: column-reverse;                     /* Change flex direction form row to colum*/
+    flex-direction: row ;                     /* Change flex direction form row to colum*/
 }
 
 h1{
@@ -18,4 +18,25 @@ h1{
     color: white;
     text-align: center;
     font-size: 1.5em;
+}
+#container1{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: column ;                     /* Change flex direction form row to colum*/
+
+}
+
+#container2{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: flex-end;
 }
