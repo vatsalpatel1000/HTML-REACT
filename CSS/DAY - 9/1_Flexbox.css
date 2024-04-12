@@ -38,5 +38,131 @@ h1{
     border: 2px solid black;
     display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
     flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: center;                        /* all div will be center in page  */
+}
+
+#container3{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: flex-start;
+}
+
+#container4{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
     justify-content: flex-end;
+}
+
+#container5{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: space-between;                     /*given space between box */
+}
+
+#container6{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: space-around;                      /*given right and left both side half space */
+}
+
+#container7{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row-reverse ;                     /* Change flex direction form row to colum*/
+    justify-content: space-evenly;                      /*given right and left both side equal space */
+}
+
+#container8{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row ;                     /* Change flex direction form row to colum*/
+    justify-content: flex-start;                    /* given right and left both side equal space */
+    flex-wrap: wrap;                                /*if we dont wat parent div auto resize div then will use wrap in this div given size will dont change */
+    /*align-items: baseline;                       all div will be arrange based on their content data*/
+    align-content: space-around;                    /* it works like justify content but it give equal space on top and bottom side  */
+    align-items: flex-start;                        /* it push all the div box to up/down/center side & on  baseline  */
+    align-self:center;                              /* it push individual div box to up/down/center side & on  baseline  */
+}
+
+#blue{
+    flex-basis: 400px;                              /* if space is their in box than it give to div and demepend on flex-direction if row than it efffect width and if coloun than i effect height of div*/
+}
+
+#container9{
+    height: 100px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: row ;                     /* Change flex direction form row to colum*/
+    /*justify-content: flex-start;                    /* given right and left both side equal space */
+   /* flex-wrap: wrap;                                /*if we dont wat parent div auto resize div then will use wrap in this div given size will dont change */
+    /*align-items: baseline;                       all div will be arrange based on their content data*/
+    /*align-content: space-evenly;                    /* it works like justify content but it give equal space on top and bottom side  */
+    /*align-items: flex-start;                        /* it push all the div box to up/down/center side & on  baseline  */
+   /* align-self:center;                              /* it push individual div box to up/down/center side & on  baseline  */
+}
+#red{
+    flex-grow: 1;                                   /* it will give all remaining space assign to that class div */
+}
+#blue{
+    flex-grow: 1;                                   /* and if it assign to 2 div than it will devide eually on both div */
+    max-width: 500px;                               /* we can set max and min div width for responsive div */
+    min-width: 50px;                                /* we can set max and min div width for responsive div */
+}
+
+#container10{
+    height: 300px;
+    width: 50%;
+    background-color: white;
+    margin: 10px auto;                          /* auto menas center here*/
+    border: 2px solid black;
+    display: flex;                              /* Use for arrange all div in one parent div element & By default div arrange as row not in coloun */
+    flex-direction: column ;                     /* Change flex direction form row to colum*/
+
+   
+}
+#blue1{
+    flex-shrink: 1;                             /* if container overflow and no space is there than this will shrink or reduce that individual div/ element */    
+}
+
+#orange{
+    flex-shrink: 2;
+    flex: 2 2 100px;                            /* flex shorthand grow | shrink | initial size */
+}
+#container10 div{
+    height: 100px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
 }
