@@ -1,0 +1,31 @@
+.container{
+    height: 300px;
+    width: 600px;
+    background-color: yellow;
+    display:grid;
+    /* grid-template-rows : 50px 50px 50px 50px 50px ;                 /* Create row for grid with size */
+    /* grid-template-columns: 100px 100px 100px 100px;                 /* Create column for grid*/
+    grid-template-rows: repeat(3,1fr);                                 /* Create row for grid according to given value and 1 fr is for remaining space*/
+    grid-template-columns: repeat(3,1fr);                              /* Create row for grid according to given value and 1 fr is for remaining space*/
+    /* row-gap: 10px;                                                  /* Create gap between row grid lines */ 
+   /* column-gap: 10px; */                                             /* Create gap between column grid lines */ 
+    grid-gap: 10px 10px;                                               /* Create gap between row & column both grid lines */ 
+    justify-items: start;
+}
+
+.item{
+    height: 50px;
+    width: 50px;                            /* if item size is not given than element take te grid property */
+    background-color: greenyellow;
+    border: 2px solid black;   
+    text-align: center;
+}  
+
+#one{
+  /*  grid-column:1/4;                        /* Stand for Line no of grid coloum and it give extra space to grid */
+   /* grid-row:1/4;                        /* Stand for Line no of grid coloum and it give extra space to grid */
+}
+
+#two{
+    justify-self: end;
+}
