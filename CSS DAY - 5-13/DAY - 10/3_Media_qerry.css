@@ -1,0 +1,55 @@
+h1{
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+/* @media (width: 400px ){
+    h1{
+        background-color: red;
+        color: blue;
+    }
+    div{
+            background-color: green;
+        }
+    
+} 
+
+@media (min-width: 400px ){
+    h1{
+        background-color: green;
+        color: blue;
+    }
+    div{
+            background-color: green;
+        }
+    
+}
+
+@media (max-width: 500px ){
+    h1{
+        background-color: red;
+        color: blue;
+    }
+    div{
+            background-color: green;
+        }
+    
+}
+*/
+
+@media (min-width: 400px ) and (max-width: 800px) {             /* wewbsite resolution betwee 400 to 500 colour will change  for potrate side*/
+    h1{
+        background-color: red;
+        color: blue;
+    }
+    div{
+            background-color: green;
+        }
+    
+}
+
+@media(orientation:landscape){                                  /* website color change for landscape screen side*/
+    h1{
+        background-color: aqua;
+    }
+}
