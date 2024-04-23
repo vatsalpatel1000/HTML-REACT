@@ -1,0 +1,19 @@
+.container-sm{
+    background-color: orange;
+}
+
+.container-md{
+    background-color: blue;
+}
+
+.container-lg{
+    background-color: green;
+}
+
+.container-xl{
+    background-color: rgb(159, 255, 5)
+}
+
+.container-fluid{
+    background-color: pink;
+}
