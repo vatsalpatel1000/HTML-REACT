@@ -3,6 +3,7 @@ let a = 10;
 let b = 5;
 console.log("sum is "+ a + b);              /* + usen when string  + nuber    =   vatsal + 123 = vatsal123  */
 console.log("sum is ", a + b);
+console.log("sum is ", a , b);
 
 let pencil = 10;
 let erasor = 5;
@@ -143,15 +144,59 @@ let colot ="white";
 }
 
 
-// alert('danger');
-// console.log("thi sis a simle log");
-// console.warn('warning');
-// console.error('error');
-// let vat = prompt('ente name');
-// console.log(vat);
+alert('danger');
+console.log("thi sis a simle log");
+console.warn('warning');
+console.error('error');
+let vat = prompt('ente name');
+console.log(vat);
 
 
-firstName = prompt('enter firstname');
+firstName = prompt('enter firstname');                       /* prompt take user input and store in first name */  
 lastName = prompt('enter lastname');
 total = firstName + " " + lastName;
-console.error(total);
+alert(total);                                                /* give total value as alert box */
+
+
+
+let numi = 25;
+
+    if((numi % 10 == 0)){
+        console.log('Good');
+    }else{
+        console.log('Bad');
+    }
+
+userName = prompt('username');
+age = prompt('age');
+// alert('My name is ' + userName + ' & my age is ' + age  );
+alert(`My name is ${userName}  & my age is ${age} `);
+
+
+stri = prompt("given input");
+    if(stri[0] == 'a' || stri[0] == 'a' && stri.length>5){
+            alert('golden string ');
+    }else {
+        alert('not golden string ');
+    }
+
+
+let c = 15;
+let d = 16;
+let e = 17;
+    if (c>d){
+        if (c>e){
+            console.log('c is grether');
+        }
+        else{
+            console.log('e is grether');
+        }
+    }
+    else {
+        if(d>e){
+            console.log('d is grether');
+        }
+        else {
+            console.log('e is grether');
+        }
+    }
