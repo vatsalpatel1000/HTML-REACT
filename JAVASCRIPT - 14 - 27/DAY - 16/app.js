@@ -12,7 +12,6 @@ msg.toLowerCase();
 console.log(msg);
 
 
-
 let msg1 = "VATSAL";
 msg.toUpperCase();
 console.log(msg1);
@@ -36,7 +35,7 @@ let msg4 = 'help!';
 msg4.trim.toUpperCase();
 
 
-/*          ARRAY                      ARRAY                    ARRAY                                      ARRAY                                      ARRAY                  */
+/*          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY          ARRAY         */
 
 let student = ['aman', 'shraddha','vatsal'];
 student;
@@ -55,4 +54,105 @@ let fruits = ['banana','apple','orange'];
 fruits[0] = 'watermalon';
 fruits
 
-fruits[10] = 'papaya';
+fruits[10] = 'papaya'; 
+
+
+fruits.push('lal');                 /* Add last array */ 
+fruits.pop();                       /* remove last array */
+fruits.unshift('red');              /* Add First array */
+fruits.shift();                     /* remove First array */
+
+/* EXAMPLE */
+let followers = ['a','b','c'];
+let blocked = followers.shift();
+
+let months = ['january','july','march','august',];
+months.shift().months.shift();
+
+let months1 = ['january','july','march','august',];
+months.indexOf('august')                /* true 3 false = -1  */
+months.includes('august')               /* True fase  */
+
+let followers1 = ['a','b','c'];
+let months12 = ['january','july','march','august',];
+followers1.concat(months12)
+
+let months123 = ['january','july','march','august',];
+months123.reverse();
+
+let color = ['red','yellow','blue','orange','pink','white',];
+color.slice(2);
+color.slice(-2);
+color.slice(2,3);
+color.slice(color.length-1);
+
+let color1 = ['red','yellow','blue','orange','pink','white',];
+color.splice(3);
+color
+color.splice(0,1);
+color
+color.push("maruti");
+color.push('ferrari');
+car
+color.splice(1,2);
+color
+color.splica(0,0,'toyota','xuv','maruti');
+color
+color.splice(1,0,'mercedes');
+color
+color.splice(1,1,'gwagon');
+color
+
+
+/* EXAMPLE */
+let months02 = ['january','july','march','august',];                 /* ['july', 'june', 'march', 'august'] */
+months02.splice(0,2,'july','june');
+months02                /* ['july', 'june', 'march', 'august'] */
+
+let months03 = ['c','c++','java','javascript',];   
+months03.reverse().indexOf('java');
+
+
+/* Array refereaces  */
+[1] === [1];            /* false  cz reference are not same */    
+[1] == [1];             /* false  */
+
+
+
+
+const arr = ['1','2','3'];
+arr;
+arr1 = arr;   
+arr1 == arr;          /* true cz reference are same in memory */
+
+
+/* Const Array   */
+
+const arr12 = [1,2,3]
+arr12;
+arr12.push('4');
+arr12;
+arr12.pop();
+arr12;
+arr123 = [1,2,3]        /* typeerror can't assign arr123 to value again */
+
+
+/* Nested Array   */
+
+let nums = [['2','4'],['3','6'],['4','8']];
+nums;
+nums.length;
+nums;
+nums[0].length;
+nums[0][0];
+
+
+let game = [['x','null','0'],
+            ['null','x','null'],
+            ['0','null','x']];
+
+game[0];
+game;
+game[0][1] = '0';
+game;
+game;
