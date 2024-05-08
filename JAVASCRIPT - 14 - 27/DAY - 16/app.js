@@ -156,3 +156,58 @@ game;
 game[0][1] = '0';
 game;
 game;
+
+// /* PRACTICE 
+// Write a JavaScript program to get the first n elements of an array. [n can be any
+//     positive number].
+//     For example: for array [7, 9, 0, -2] and n=3;
+let arra = [7,9,0,-2];
+let n= 3;
+ans = arra.slice(0,n);
+console.log(ans);
+
+
+// Write a JavaScript program to get the last n elements of an array. [n can be any
+//     positive number].
+//     For example: for array [7, 9, 0, -2] and n=3let arra = [7,9,0,-2];
+let arra1 = [7,9,0,-2];
+let n1= 3;
+ans = arra1.slice(arra1.length-n1);
+console.log(ans);
+
+
+// JavaScript program to check whether a string is blank or not.
+let str12 = '123';
+if(str12==0){
+    console.log("string is empty");
+}else{
+    console.log("string");
+} 
+
+
+// Write a JavaScript program to test whether the character at the given (character)
+// index is lower case.
+
+let apn = 'apnacollege';
+if(apn == apn.toLowerCase){
+    console.log("lower");
+}else{
+    console.log("notlower");
+}    
+
+
+// JavaScript program to strip leading and trailing spaces from a string.
+
+let str32 = prompt('please enter the string');
+sre33 = console.log('orignal string '+ str32);
+console.log('After string '+ str32.trim());
+
+// JavaScript program to check if an element exists in an array or not.
+
+let arr43 = ['hello','a',23,64,99,-61];
+let item43 = 64;
+if(arr43.indexOf(item43)!= -1){
+    console.log('element exist in array');
+}else{
+    console.log('element doesnt exist in array');
+}
