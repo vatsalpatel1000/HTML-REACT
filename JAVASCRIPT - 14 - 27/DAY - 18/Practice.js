@@ -14,3 +14,4 @@ let person = {
     city : 'Jaipur'
 }
 person.city = 'New York';
+person.country = 'US';
