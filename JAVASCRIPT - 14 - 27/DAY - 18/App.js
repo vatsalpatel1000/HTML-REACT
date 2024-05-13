@@ -89,10 +89,12 @@ step2 = step1 *10;
 step3 = Math.floor(step2);
 result  = step3 +1;
 
+//Practice questions
 let random = Math.floor(Math.random() * 10) + 1;    // Generate random numsber 0-10
 let random1 = Math.floor(Math.random() * 100) + 1;    // Generate random numsber 0-100
 let random2 = Math.floor(Math.random() * 5) + 1;    // Generate random numsber 0-5
 let random3 = Math.floor(Math.random() * 5) + 21;    // Generate random numsber 21-25
+
 
 
 const max = prompt('enter the max value ');
@@ -107,7 +109,7 @@ while(true){
         console.log('u r right');
         break;
     }
-    else if(guess < random){
+    else if(guess < random){                                    //Hints
         guess = prompt("u r guess was too large ");
     }
     else{

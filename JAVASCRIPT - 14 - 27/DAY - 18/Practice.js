@@ -1,12 +1,13 @@
-let num = Math.floor(Math.random()*10) +1;
-
+let num = Math.floor(Math.random()*6) +1;
+console.log(num);
 
 let car = {
     name : 'BMW',
     model : 'X7',
     color : 'Magenta'
 }
-car['name'];
+console.log(car['name']);
+
 
 let person = {
     name:'Vatsal',
@@ -15,3 +16,4 @@ let person = {
 }
 person.city = 'New York';
 person.country = 'US';
+console.log(person);
