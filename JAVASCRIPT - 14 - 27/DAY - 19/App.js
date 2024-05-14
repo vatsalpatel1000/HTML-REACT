@@ -179,10 +179,10 @@ function multiplegreet(func,count){
         func();
     }
 }
-let greet = function(){
+let greet1 = function(){
     console.log('hello');
 }
-multiplegreet(greet,1000);
+multiplegreet(greet1,1000);
 
 
 // Higher order function // function factory
