@@ -144,8 +144,8 @@ form.addEventListener("submit", function(event) {
 
 
     user.addEventListener("input", function () {          // give differace betweem initial stage between final stage 
-         console.log("final input=", this.value);
-         console.log("final input=", user.value);
+        console.log("final input=", this.value);
+        console.log("final input=", user.value);
     });    
 });
 

@@ -22,4 +22,3 @@ function getRndmno(){
 let color = `rgb(${red}, ${green}, ${blue})`;
 return color;
 }
-
