@@ -137,14 +137,14 @@ form.addEventListener("submit", function(event) {
 // More event 
     let user = document.querySelector('#user');
      user.addEventListener("change", function () {          // give differace betweem initial stage between final stage 
-        console.log("final change=", this.value);
+        console.log("input change=", this.value);           // Value change  when the button press and click outside the input box . CHANGE EVENT trace the santence and click outside the input box and give as output.
         console.log("final change=", user.value);
     });
 
 
 
     user.addEventListener("input", function () {          // give differace betweem initial stage between final stage 
-        console.log("final input=", this.value);
+        console.log("input input=", this.value);          // Value change execta afte the press button. INPUT EVENT trace the key press and give as output.
         console.log("final input=", user.value);
     });    
 });
