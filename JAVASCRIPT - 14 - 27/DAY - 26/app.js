@@ -96,3 +96,21 @@ async function demo(){
     console.log(a);
     console.log("new number =", a+3);
 }
+
+
+// JSON
+//Json key always a string 
+//JS Object take undefined as value
+//js doesn"t support Undefined 
+//JSON return data in form of string 
+
+let jsonRes = {"fact":"Julius Ceasar, Henri II, Charles XI, and Napoleon were all afraid of cats.","length":74} //API Data in json
+let validRes = JSON.parse(jsonRes);     // convert json data to js object 
+console.log(validRes.fact);
+
+
+let student = {
+    name : "vatsal",
+    marks : 95
+}
+JSON.stringify(student);                // convert js object to json data 
