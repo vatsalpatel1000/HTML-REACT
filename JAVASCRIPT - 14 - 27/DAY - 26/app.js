@@ -113,4 +113,128 @@ let student = {
     name : "vatsal",
     marks : 95
 }
-JSON.stringify(student);                // convert js object to json data 
+JSON.stringify(student);                // convert js object to json data
+
+
+// our first api request
+
+let url = "https://catfact.ninja/fact";
+fetch(url)
+.then((res) => {
+    response.json();
+})
+.then((data) => {
+    console.log("data1 = ", data.fact)
+    return fetch.json();                // call fatch url api call
+})
+.then((res) => {
+    response.json();
+})
+.then((data) => {
+    console.log("data1 = ", data.fact)
+})
+
+.catch((err)=>{
+    console.log(err);
+});
+
+console.log('i am happy');              // this will print first and api will call later 
+
+
+// API using async await 
+
+let url1 = "https://catfact.ninja/fact";
+
+async function getfacts(){
+    try{
+    let res1 = await fetch(url);                // we hase to parse data in string to jason data for make readable
+    let data1 = await res1.json();
+    console.log(data.fact)
+
+    
+    let res2 = await fetch(url);
+    let data2 = await res2.json();
+    console.log(data2.fact)
+}catch(e){
+    console.log(e);
+}
+    console.log('bye');
+}
+
+
+// API Using Axios => Library to make HTTP request
+
+let btn = document.querySelector('button');
+
+btn,addEventListener('click', async()=>{
+    let fact = await getfacts();
+    console.log(fact);
+    let p = document.querySelector("#result");
+    p.innerText =  fact;
+});
+
+
+let url2 = "https://catfact.ninja/fact";
+
+async function getfacts(){
+    try{
+    let re3 = await axios.get(url2);                // axios directly give us json data we we dont need to conver to json its already done by axios
+    return(res.data.fact);
+    }catch(e){
+        console.log('ERROR-', e);
+        return "No fact found"
+    }
+}
+
+
+
+
+//  Sending Headers with API requests
+
+const url4 = "https://icanhazdadjoke.com"
+async function getjokes(){
+    try{
+        const config = { headers: { Accept: "application/json" }};
+        let res = await axios.get(url, config);
+        console.log(res.data);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+
+//  Activity using Query Strings
+
+let url5 = "https://univetsities.hipolabs.com/search?name=";
+let btn1 = document.querySelector("button");
+
+btn.addEventListener('click', async() => {
+    let country = document.querySelector("input").value;
+    console.log(country);
+
+    let colArr = await getColleges(country);
+    console.log(colArr); 
+    show(colArr);
+});
+
+function show(colArr){
+    let list = document.querySelector('#list');
+    list.innerText = '';
+    for (col of colArr){
+        console.log(col.name);
+        let li = document.create.Elemement('li');
+        li.innerText = col.name;
+        list.appendChild(li);
+    }
+}
+
+async function getColleges(country){
+    try{
+        let res = await axios.get(url + country);
+        return (res.data);
+    } catch(e){
+        console.log('error :',e);
+        return []; 
+    }
+}
