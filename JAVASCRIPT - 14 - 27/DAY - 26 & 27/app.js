@@ -26,7 +26,7 @@ greet1()
 // Await Keyword        -> work under async => stop all other promise till current promise stage is not sattled
 
 function getNum(){
-    return new Promise((resolve,rejecte)=>{
+    return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             let num = Math.floor(Math.random()*10)+1;
             console.log(num);
@@ -119,21 +119,21 @@ JSON.stringify(student);                // convert js object to json data
 // our first api request
 
 let url = "https://catfact.ninja/fact";
-fetch(url)
+fetch(url)                              // Fetch return/comes with promise and its used to send request to URL to retrieve data.
 .then((res) => {
-    response.json();
+    return res.json();                  // Successful completion of the fetch request, the then method converts the response (res) to JSON format.
 })
 .then((data) => {
     console.log("data1 = ", data.fact)
-    return fetch.json();                // call fatch url api call
-})
-.then((res) => {
-    response.json();
-})
-.then((data) => {
-    console.log("data1 = ", data.fact)
+    return fetch(url);                // call fatch url api call again
 })
 
+.then((res) => {
+    return res.json();                // convert in json format
+})
+.then((data) => {
+    console.log("data1 = ", data.fact)
+})
 .catch((err)=>{
     console.log(err);
 });
@@ -178,7 +178,7 @@ let url2 = "https://catfact.ninja/fact";
 
 async function getfacts(){
     try{
-    let re3 = await axios.get(url2);                // axios directly give us json data we we dont need to conver to json its already done by axios
+    let res = await axios.get(url2);                // axios directly give us json data we we dont need to conver to json its already done by axios
     return(res.data.fact);
     }catch(e){
         console.log('ERROR-', e);
@@ -194,7 +194,7 @@ async function getfacts(){
 const url4 = "https://icanhazdadjoke.com"
 async function getjokes(){
     try{
-        const config = { headers: { Accept: "application/json" }};
+        const config = { headers: { Accept: "application/json" }};      // pass info with header which format type of data  we want
         let res = await axios.get(url, config);
         console.log(res.data);
     }

@@ -1,0 +1,30 @@
+Terminal
+
+ls = list file => show my file
+
+Pwd = print work directory => Where am i? 
+
+Clear = clear screen
+
+cd = Change directory       
+    cd Desktop = to fo Desktop directory  
+    cd.. = Back button
+    cd../.. =  Go 2 step Back
+
+cd Desktop/Delta = Relative path = 
+cd /Users/shradhakapra/Desktop = Absolute path    
+
+/ = Root directory
+~ = Home directory
+
+Mkdir = make directory
+
+man ls = give info about ls command
+man mkdir = give info about mkdir command
+
+touch index.html = create new file 
+
+
+rm index.html   = remove file
+rmdir = remove empty folder
+rm -rf = remove any folder with data    => remove with force
