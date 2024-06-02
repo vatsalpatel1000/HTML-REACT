@@ -155,14 +155,26 @@ async function getfacts(){
     let res2 = await fetch(url);
     let data2 = await res2.json();
     console.log(data2.fact)
-}catch(e){
-    console.log(e);
-}
-    console.log('bye');
+    }catch(e){
+        console.log(e);
+    }
+        console.log('bye');
 }
 
 
 // API Using Axios => Library to make HTTP request
+
+
+async function getFacts(){
+    try{
+        let res =await axios.get(url);
+        console.log(res)
+    }catch(e){
+        console.log(e);
+    }
+}
+
+// example
 
 let btn = document.querySelector('button');
 
@@ -185,8 +197,6 @@ async function getfacts(){
         return "No fact found"
     }
 }
-
-
 
 
 //  Sending Headers with API requests
