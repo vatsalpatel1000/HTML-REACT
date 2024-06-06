@@ -167,7 +167,7 @@ async function getfacts(){
 
 async function getFacts(){
     try{
-        let res =await axios.get(url);
+        let res =await axios.get(url1);
         console.log(res)
     }catch(e){
         console.log(e);
