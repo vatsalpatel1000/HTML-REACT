@@ -15,7 +15,6 @@
     }
     100% {
     
-        transform: rotat
-        e(360deg);
+        transform: rotate(360deg);
     }
     }
