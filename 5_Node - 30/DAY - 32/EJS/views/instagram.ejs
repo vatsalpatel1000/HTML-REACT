@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">           <!-- by default public folder give path -->
+</head>
+
+<%- //include("includes/head.ejs) %>                  <!-- devide code in parts or sub section in form of file &  folders -->
+<body>
+    <h2>THis page belongs to <%= data.name // username %> <h2>               
+        <button>follow</button>
+        <button>message</button>
+
+        <p> Followers : <%= data.followers %>
+            Following : <%= data.following %>
+        </p>
+        <hr/>
+        
+        <%  for(let post of data.posts){  %>
+            <img src=" <%= post.image %> " alt="some img"/>
+            <p>
+                likes : <%= post.likes %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                comments : <%= post.comments %>
+            </p>    
+        <%} %>
+
+        <!-- <h3> Account that follow you</h3> -->
+        <!-- <ul> -->
+            <% //for(let follow of followers) { %>                             For loop in EJS
+            <!-- <li> <%= //follow %> </li>         -->
+            <% //} %>
+        <!-- </ul> -->
+<%- //include("includes/footer.ejs) %>
+<script src = '/5_Node - 30/DAY - 32/EJS/public/js/app.js' ></script>>
+</body>
+</html>
