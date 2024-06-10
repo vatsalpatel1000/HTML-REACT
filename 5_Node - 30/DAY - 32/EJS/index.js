@@ -35,5 +35,5 @@ app.get("/ig/:username",(req,res)=>{                        // get request by us
     let instadata = require('./data.json');                 // call data.json file 
     const data = instadata[username];                       // call user parameter data in data.json file 
     console.log(data);
-    res.render('instagram.ejs',{ data });                   // parameter data send to ejs file to print  
+    res.render('instagram.ejs',{ data });                   // parameter data send to ejs file to print  render will find view folder 
 })
