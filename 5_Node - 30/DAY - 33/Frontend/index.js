@@ -9,9 +9,9 @@ function Personmaker(name, age){
     };
     return person;
 }
-
 let p1 = Personmaker('vatsal',28);      // create copy in memory 
 let p2 = Personmaker('Bhavesh',26);     // create copy in memory
+
 
 
 // Constructor - doesnot return anythind & start with capital letter
@@ -22,9 +22,9 @@ function Person(name, age){
 person.prototype.talk = function(){
     console.log(`hi , my name is ${this.name}`);
 }
-
 let b = new person('vatsal',28);      // can't copy in memory 
 let n = new person('Bhavesh',26);     // can't copy in memory
+
 
 
 // Classes
@@ -37,9 +37,9 @@ talk(){
     console.log(`hi , my name is ${this.name}`);
 }
 }
-
 let b1 = new person('vatsal',28);      // create copy in memory 
 let b2 = new person('Bhavesh',26);  
+
 
 
 // Inheritance
