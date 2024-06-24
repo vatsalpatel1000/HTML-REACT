@@ -10,11 +10,11 @@ app.listen(port, () =>{
 
 // app.use((req,res)=>{
 //     console.log('request received');
-//     // res.send('this is basic response');  // can send only one response at a time
-//     // res.send({
-//     //     name : "vatsal",            // express conver js object to JSON
-//     //     age : 28
-//     // });
+    // res.send('this is basic response');  // can send only one response at a time
+    // res.send({
+    //     name : "vatsal",            // express conver js object to JSON
+    //     age : 28
+    // });
 //     let code ="<h1> fruits </h1> <ul><li> apple </li> <li> orange </li></ul>";
 //     res.send = (code);
 // });

@@ -11,13 +11,13 @@ app.listen(port, () => {
 });
 
 app.get("/register", (req, res) => {
-    console.log(req.query);     
+    console.log(req.query);                                     // User for get data 
     let { username , password } = req.query;                    // print request data comes from html page
     res.send(`Standard GET response. welcome to,  ${username}`);
 });
 
 app.post("/register", (req, res) => {
-    console.log(req.body);                                  // print request data comes from html page
+    console.log(req.body);                                  // print request data comes from html page  , uer for post data
     let { username , password } = req.body;                 // body conver data to json so use middleware here            
     res.send(`Standard POST response. welcome to, ${username}`);
 });
