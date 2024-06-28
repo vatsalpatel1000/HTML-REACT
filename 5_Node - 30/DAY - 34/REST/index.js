@@ -37,15 +37,15 @@ let posts = [
     },
 ]    
 
-app.get('/posts', (req, res) => {                           // Index route
+app.get('/posts', (req, res) => {                           // Index route      GET
     res.render("index.ejs",{posts});
 });
 
-app.get("/posts/new",(req, res) => {                        // Create new route
+app.get("/posts/new",(req, res) => {                        // Create new route     POST
     res.render("new.ejs");
 })
 
-app.post("/posts",(req, res) =>{
+app.post("/posts",(req, res) =>{                            // New array data add to posts index.js page in all data    POST
     console.log(res.body);
     let {username,content} = req.body;
     let id = uuidv4();                                      // Create unique id 
