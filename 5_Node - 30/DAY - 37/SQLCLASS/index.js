@@ -27,6 +27,7 @@ const connection = mysql.createConnection({
   password :'1234'
 });
 
+//HOME ROUTE
 app.get("/", (req, res) => {
   let q = `SELECT count(*) FROM user`;
   try {
@@ -40,6 +41,7 @@ app.get("/", (req, res) => {
   }
 });
 
+//SHOW ROUTE
 app.get("/user", (req, res) => {
   let q = `SELECT * FROM user`;
   try {
@@ -53,6 +55,7 @@ app.get("/user", (req, res) => {
   }
 });
 
+//EDIT ROUTE  (1) -> get form to edit username based on id this form will require password
 app.get("/user/:id/edit", (req, res) => {
   let { id } = req.params;
   let q = `SELECT * FROM user WHERE id='${id}'`;
@@ -68,6 +71,7 @@ app.get("/user/:id/edit", (req, res) => {
   }
 });
 
+//EDIT ROUTE  (2) -> Edit username if correct password was entered in form
 app.patch("/user/:id", (req, res) => {
   let { id } = req.params;
   let { username, password } = req.body;
@@ -98,10 +102,12 @@ app.patch("/user/:id", (req, res) => {
   }
 });
 
+// ADD USER ROUTE
 app.get("/user/new", (req, res) => {
   res.render("new.ejs");
 });
 
+// UPDATE (DB) ROUTE
 app.post("/user/new", (req, res) => {
   let { username, email, password } = req.body;
   let id = uuidv4();
@@ -134,6 +140,7 @@ app.get("/user/:id/delete", (req, res) => {
   }
 });
 
+// DELETE DATA ROUTE
 app.delete("/user/:id/", (req, res) => {
   let { id } = req.params;
   let { password } = req.body;
