@@ -107,7 +107,7 @@ app.get("/user/new", (req, res) => {
   res.render("new.ejs");
 });
 
-// UPDATE (DB) ROUTE
+
 app.post("/user/new", (req, res) => {
   let { username, email, password } = req.body;
   let id = uuidv4();
@@ -125,6 +125,7 @@ app.post("/user/new", (req, res) => {
   }
 });
 
+// DELETE DATA ROUTE
 app.get("/user/:id/delete", (req, res) => {
   let { id } = req.params;
   let q = `SELECT * FROM user WHERE id='${id}'`;
@@ -140,7 +141,6 @@ app.get("/user/:id/delete", (req, res) => {
   }
 });
 
-// DELETE DATA ROUTE
 app.delete("/user/:id/", (req, res) => {
   let { id } = req.params;
   let { password } = req.body;
