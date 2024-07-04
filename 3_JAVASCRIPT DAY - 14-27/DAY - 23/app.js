@@ -50,8 +50,8 @@
 
 // let btn = document.querySelector('button');
 // btn.addEventListener("mouseenter",function(){
-//     // console.log(this);
-//     // this.style.backgroundColor = 'blue';
+//      console.log(this);
+//      this.style.backgroundColor = 'blue';
 // });
 
 // let h1 = document.querySelector('h1');

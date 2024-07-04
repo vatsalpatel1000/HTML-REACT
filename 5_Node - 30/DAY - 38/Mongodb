@@ -1,0 +1,67 @@
+Mongosh  - start / go to to ongodb enviroment.
+use dbname -  Create OR user new db.
+test>  -   Temparary db create by mongodb.
+show dbs  -  show databases;                        // here college is the database ==  database name               
+show collection - show tables;                      // here student is the collection ==  table                 collection = student
+
+INSERT IN DB
+Insertone
+db.collection.insertone( { name :'vatsal', age :18 });
+db.student.find();
+
+Insertmany
+show collections;
+db.student.insertone( [ { name :'vatsal', age :18 }, {name : 'shreya' age : 18 } ] );
+
+FIND IN DB
+db.student.find();
+db.student.find( { age : 16 } );              // Reference of document
+db.student.findone( { age : 16 } );           // Actual document
+
+Db.student.find({ city : 'delhi' , marks : '75' })                            // city like delhi  AND marks = 75
+Db.student.find({ marks : { $get : 75 } })                                    // studnet where marks > 75
+Db.student.find({ city : { $in : [delhi , mumbai] }}  )                       // student who live in  delhi AND mumbai
+Db.student.find({ $OR : [{ marks : { $get : 75 }}, { city : 'delhi'} ] })     // student who scored > 75 OR live in delhi
+
+$eq  = equal to 
+$gt  = greater then;
+$gte = greter thena equal to 
+$in  = in array
+$lt  = less then
+$lte = less than equal
+$ne  = not equal
+$AND = AND 
+$OR  = OR
+$set = SET for UPDATE 
+
+UPDATE IN DB
+Updateone
+db.collection.Updateone( <filter>,<update>,<options> )
+db.studnet.Updateone( {name : 'vat'}, {$set:{marks : 99}} )
+
+Updatemany
+db.student.Updatemany( {city : 'delhi'}, { $set: { marks : 99 }})
+
+replaceone                                                                     // change the whole document data
+db.collection.replaceone( { name : 'bob'}, { name : 'vatsal', marks : 94 , state : 'UP' })
+
+Nesting                              // Object inside Object
+{ id : 101 ,
+  name : 'vat',
+  performance : { marks : 88 ,grade : "A" }
+}       
+To find
+Db.student.findone( { " performance.marks" : 88 })
+
+DELETE IN DB
+Deleteone
+db.collection.deleteone( <filter>,<update>,<options> )
+db.collection.deleteone( { state : 'UP' } )
+
+Deletemany
+db.collection.deletemany( marks { $lt : 75 } )
+
+Delete database
+db.drop.databasename()
+db.student.deletemany({})               // delete all data from db
+db.drop.college()                       // delete database   
