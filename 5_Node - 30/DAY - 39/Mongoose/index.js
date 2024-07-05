@@ -52,7 +52,7 @@ User.insertMany([
 ])
 
 //FIND
-User.find({})                        //                
+User.find({})                                    
     .then((res)=>{
         console.log(res)                                 
         console.log(res[0])
