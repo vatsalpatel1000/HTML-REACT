@@ -60,5 +60,3 @@ book.findByIdAndUpdate("101",{ price : -500}, {runValidators : true})           
     .catch((err)=>{
         console.log(err.error.price.properties.message)                     // it show the custom generate error by user here "Please enter a valid price" is custome generated error when value given less than 1 
     });
-
-    
