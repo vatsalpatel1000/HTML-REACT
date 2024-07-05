@@ -19,6 +19,7 @@ let getUser = () => {
     faker.internet.password(),
   ];
 };
+// npm i node express ejs nodemon mysql2 mongoose uuid method-override @faker-js/facker
 
 const connection = mysql.createConnection({
   host : 'localhost',
