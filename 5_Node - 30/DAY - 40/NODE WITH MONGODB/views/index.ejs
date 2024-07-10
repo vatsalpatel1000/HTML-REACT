@@ -25,8 +25,8 @@
             </div>
             <p>Received by <i><%=chat.to %></i></p>
         </div>
-        <p><%= chat.created_at.toString().split(" ")[4] %>
-        <p><%= chat.created_at.toString().split(" ").slice(0,4).join("-") %><hr>
+        <p><%= chat.created_at.toString().split(" ")[4] %>      <!-- split => it find space, after 4's space it will give value -->
+        <p><%= chat.created_at.toString().split(" ").slice(0,4).join("-") %><hr>    <!-- it find space, after 4's space it will give 0-4 all value then join all 4 values between(-) -->
     <% } %>
     <br><br>
 </body>
