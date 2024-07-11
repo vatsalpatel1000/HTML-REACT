@@ -5,7 +5,7 @@ const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
 const { v4: uuidv4 } = require("uuid");
-
+//npm i node express nodemon  mongoose ejs method-override 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
