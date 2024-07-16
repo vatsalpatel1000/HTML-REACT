@@ -4,6 +4,7 @@ const path = require('path');
 const methodOverride = require("method-override");
 const Listing = require("./models/listing");
 const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
+const ejsMate =require("ejs-mate");
 
 const app = express();
 const port = 8080;
@@ -12,7 +13,8 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
+app.engine("ejs",ejsMate);
 
 main()
     .then(() => {
@@ -170,4 +172,3 @@ app.get('/', (req, res) => {
 //     console.log(DeletedcChat);
 //     res.redirect("/chats");
 // })
-
