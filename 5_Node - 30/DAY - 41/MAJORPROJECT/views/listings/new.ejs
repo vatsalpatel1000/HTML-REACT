@@ -1,19 +1,45 @@
 <% layout("/layouts/boilerplate")%>
-<body>
-    <h3> Create a new listing </h3>
+    <div class="row mt-2">              <!-- mt-2 => margin top / a;ll content put in one div for center of then page -->
+        <div class="col-8 offset-2">    <!-- offset => means from 12 box of grid left 2 div of starting-->
+            <br/><br/>  
+        <h3> Create a new listing </h3>
     <form method = "post" action="/listings">
-        <input name ='listing[title]' placeholder="enter title" type="text" >       <!-- listing[]  = title, desctiption ,price,country all types are store in this -->
-        <br/><br/>
-        <textarea name ='listing[description]' placeholder="enter description"></textarea>
-        <br/><br/>
-        <input name ='listing[image]' placeholder="enter image/URL/LINK" type="text" >
-        <br/><br/>
-        <input name ='listing[price]' placeholder="enter price" type="number" >
-        <br/><br/>
-        <input name ='listing[country]' placeholder="enter country" type="text" >
-        <br/><br/>
-        <input name ='listing[location]' placeholder="enter location" type="text" >
-        <br/><br/>
-        <button>Add</button>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Enter Title</label>
+            <input name ='listing[title]' placeholder="Add a catchy title" type="text" class="form-control"/>       <!-- listing[]  = title, desctiption ,price,country all types are store in this -->    
+        </div>
+    
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name ='listing[description]' class="form-control"></textarea>
+        </div>
+    
+        <div class="mb-3">
+            <label for="image" class="form-label">Image Link</label>
+            <input name ='listing[image]' placeholder="enter image/URL/LINK" type="text" class="form-control"/>
+        </div>
+    
+        <div class="row">
+            <div class="mb-3 col-md-4">            <!-- 1 row 2 div -->
+                <label for="price" class="form-label">price</label>
+                <input name ='listing[price]' placeholder="1200" type="number" class="form-control" />
+            </div>
+            
+        
+            <div class="mb-3 col-md-8">               <!-- 1 row 2 div -->
+                <label for="country" class="form-label">country</label>
+                <input name ='listing[country]' placeholder=" India" type="text" class="form-control"/>
+            </div>
+        </div>
+            
+        <div class="mb-3">
+            <label for="location" class="form-label">location</label>
+            <input name ='listing[location]' placeholder=" Jaipur,Rajasthan" type="text" class="form-control"/>
+        </div>
+        <br/><br/>    
+        <button class="btn btn-dark add-btn mt-2">Add</button>
+        <br/><br/>  
     </form>
-</body>
+</div>
+</div>
