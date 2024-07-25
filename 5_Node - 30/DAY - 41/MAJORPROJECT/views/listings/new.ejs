@@ -3,39 +3,46 @@
         <div class="col-8 offset-2">    <!-- offset => means from 12 box of grid left 2 div of starting-->
             <br/><br/>  
         <h3> Create a new listing </h3>
-    <form method = "post" action="/listings">
+    <form method = "post" action="/listings" class="needs-validation" novalidate>       <!-- Validation according to bootstrap-->
 
         <div class="mb-3">
             <label for="title" class="form-label">Enter Title</label>
-            <input name ='listing[title]' placeholder="Add a catchy title" type="text" class="form-control"/>       <!-- listing[]  = title, desctiption ,price,country all types are store in this -->    
+            <input name ='listing[title]' placeholder="Add a catchy title" type="text" class="form-control" required/>       <!-- listing[]  = title, desctiption ,price,country all types are store in this -->    
+        <div class ="valid-feedback"> looks good </div>
+        <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
     
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea name ='listing[description]' class="form-control"></textarea>
+            <textarea name ='listing[description]' class="form-control" required></textarea>
+            <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
     
         <div class="mb-3">
             <label for="image" class="form-label">Image Link</label>
             <input name ='listing[image]' placeholder="enter image/URL/LINK" type="text" class="form-control"/>
+            <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
     
         <div class="row">
             <div class="mb-3 col-md-4">            <!-- 1 row 2 div -->
                 <label for="price" class="form-label">price</label>
-                <input name ='listing[price]' placeholder="1200" type="number" class="form-control" />
+                <input name ='listing[price]' placeholder="1200" type="number" class="form-control" required />
+                <div class ="invalid-feedback"> Please enter correct input </div>
             </div>
             
         
             <div class="mb-3 col-md-8">               <!-- 1 row 2 div -->
                 <label for="country" class="form-label">country</label>
-                <input name ='listing[country]' placeholder=" India" type="text" class="form-control"/>
+                <input name ='listing[country]' placeholder=" India" type="text" class="form-control" required/>
+                <div class ="invalid-feedback"> Please enter correct input </div>
             </div>
         </div>
             
         <div class="mb-3">
             <label for="location" class="form-label">location</label>
-            <input name ='listing[location]' placeholder=" Jaipur,Rajasthan" type="text" class="form-control"/>
+            <input name ='listing[location]' placeholder=" Jaipur,Rajasthan" type="text" class="form-control" required/>
+            <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
         <br/><br/>    
         <button class="btn btn-dark add-btn mt-2">Add</button>

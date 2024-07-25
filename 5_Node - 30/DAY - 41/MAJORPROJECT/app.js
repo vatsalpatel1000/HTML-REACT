@@ -5,6 +5,9 @@ const methodOverride = require("method-override");
 const Listing = require("./models/listing");
 const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
 const ejsMate =require("ejs-mate");
+const wrapAsync =require("./utils/wrapAsync.js");
+const wrapAsync =require("./utils/ExpressError.js");
+const ExpressError = require('./utils/ExpressError.js');
 
 const app = express();
 const port = 8080;
@@ -43,7 +46,7 @@ main()
 // });
 
 //Index Route
-app.get("/listings", async (req, res) => {
+app.get("/listings",wrapAsync( async (req, res) => {
     try {
         const allListings = await Listing.find({});
         res.render("listings/index.ejs", { allListings });
@@ -51,7 +54,7 @@ app.get("/listings", async (req, res) => {
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
-});
+}));
 
 //New Route
 app.get('/listings/new',(req,res)=>{
@@ -59,14 +62,17 @@ app.get('/listings/new',(req,res)=>{
 })
 
 //Show Route
-app.get('/listings/:id',async(req,res)=>{
+app.get('/listings/:id',wrapAsync(async(req,res)=>{
     let {id} = req.params;
     const listing =  await Listing.findById(id);
     res.render("listings/show.ejs", {listing})
-});
+}));
 
 //Create Route
-app.post("/listings",async(req,res)=>{
+app.post("/listings",wrapAsync( async(req,res,next)=>{                  // Create custome error handling for try-catch / wrapAsync 
+    if(!req.body.listing){
+        throw new ExpressError(404, "Send valid data for listing");
+    }
 //     let {title,description, image, price, country,location} = req.body;
 //     let newchat = new Chat({
 //         title : title,
@@ -81,42 +87,54 @@ app.post("/listings",async(req,res)=>{
 //     res.redirect("/listings");
 // })
 // OR We can do 
-const newListing = new Listing(req.body.listing);       // listing[] => title, desctiption ,price,country
-await newListing.save();
-res.redirect("/listings");
-});
+        const newListing = new Listing(req.body.listing);       // listing[] => title, desctiption ,price,country
+        await newListing.save();
+        res.redirect("/listings");
+}));
 
 //Edit Route
-app.get("/listings/:id/edit", async (req, res) => {
+app.get("/listings/:id/edit",wrapAsync( async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit.ejs", { listing });
-});
+}));
 
 //Update Route
-app.put("/listings/:id",(req,res)=>{
+app.put("/listings/:id",wrapAsync( async (req,res)=>{
+    if(!req.body.listing){
+        throw new ExpressError(404, "Send valid data for listing");
+    }
     let { id } = req.params;
     Listing.findByIdAndUpdate(id, {...req.body.listing})
     res.render("/listings");
-});
+}));
 
-app.delete('/listings/:id',async(req,res)=>{
+//Delete Route
+app.delete('/listings/:id',wrapAsync( async(req,res)=>{
     let { id } = req.params;
     let deletelisting = await Listing.findByIdAndDelete(id);
     console.log(deletelisting);
     res.redirect("/listings")
-})
+}));
 
 
-app.listen(8080, () => {
-    console.log("Example app listening on port 8080");
-});
-
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {                                  // App root url
     res.send("root is working");
 });
 
+app.all('*',(req,res,next)=>{
+    next( new ExpressError(404,'page Not found'))             // Create custom error for new page 
+});
 
+app.use(( err,req,res,next )=>{                               // Middleware create for custome error handler for try-catch / wrapAsync 
+    let{statusCode = 500, message = 'Something went wrong!' } = err;
+    res.status(statusCode).send(message);
+    //res.send("something went wrong")
+});
+
+app.listen(8080, () => {                                      // App Listining port
+    console.log("Example app listening on port 8080");
+});
 
 // //Index Route 
 // app.get('/chats', async (req, res) => {
