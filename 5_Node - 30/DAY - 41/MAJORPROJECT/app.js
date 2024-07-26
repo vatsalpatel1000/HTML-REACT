@@ -7,6 +7,7 @@ const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
 const ejsMate =require("ejs-mate");
 const wrapAsync =require("./utils/wrapAsync.js");
 const ExpressError = require('./utils/ExpressError.js');
+const { listingSchema } = require('./schema.js');
 
 const app = express();
 const port = 8080;
@@ -30,6 +31,18 @@ main()
         await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust' ,  { useNewUrlParser: true, useUnifiedTopology: true });
 
     }
+
+
+const validateListing = ( req, res, next ) =>{
+    let {error} = listingSchema.validate(req.body);                      // Server side validation using joi  
+    console.log(error);
+    if(error){
+        let errMsg = error.details.map((el) => el.message ).join(",");
+        throw new ExpressError(400, errMsg );
+    }else{
+        next();
+    }
+} 
 
 // app.get('/testListing', async(req,res)=>{
 //     let sampleListing = new Listing({
@@ -68,10 +81,7 @@ app.get('/listings/:id',wrapAsync(async(req,res)=>{
 }));
 
 //Create Route
-app.post("/listings",wrapAsync( async(req,res,next)=>{                  // Create custome error handling for try-catch / wrapAsync 
-    if(!req.body.listing){
-        throw new ExpressError(404, "Send valid data for listing");
-    }
+app.post("/listings",validateListing,wrapAsync( async(req,res,next)=>{                  // Create custome error handling for try-catch / wrapAsync 
 //     let {title,description, image, price, country,location} = req.body;
 //     let newchat = new Chat({
 //         title : title,
@@ -99,7 +109,7 @@ app.get("/listings/:id/edit",wrapAsync( async (req, res) => {
 }));
 
 //Update Route
-app.put("/listings/:id",wrapAsync( async (req,res)=>{
+app.put("/listings/:id",validateListing,wrapAsync( async (req,res)=>{
     if(!req.body.listing){
         throw new ExpressError(404, "Send valid data for listing");
     }
