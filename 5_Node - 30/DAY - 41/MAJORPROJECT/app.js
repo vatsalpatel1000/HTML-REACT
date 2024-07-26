@@ -6,7 +6,6 @@ const Listing = require("./models/listing");
 const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
 const ejsMate =require("ejs-mate");
 const wrapAsync =require("./utils/wrapAsync.js");
-const wrapAsync =require("./utils/ExpressError.js");
 const ExpressError = require('./utils/ExpressError.js');
 
 const app = express();
@@ -128,7 +127,8 @@ app.all('*',(req,res,next)=>{
 
 app.use(( err,req,res,next )=>{                               // Middleware create for custome error handler for try-catch / wrapAsync 
     let{statusCode = 500, message = 'Something went wrong!' } = err;
-    res.status(statusCode).send(message);
+    res.status(statusCode).render("error.ejs", {message});
+    //res.status(statusCode).send(message);
     //res.send("something went wrong")
 });
 
