@@ -30,7 +30,7 @@ const Customer = mongoose.model('Customer',CustomerSchema);
 
 const findCustomer = async () => {
 
-    let result = await Customer.find({}).populate("orders");        // it will show object esacping the objId and we can print it like array    // it give fill info about object
+    let result = await Customer.find({}).populate("orders","username");        // it will show object esacping the objId and we can print it like array    // it give fill info about object    // username =  it will show only ussername section from order table
     console.log(result[0]);
 };
 
