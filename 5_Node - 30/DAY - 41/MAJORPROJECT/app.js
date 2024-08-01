@@ -8,6 +8,7 @@ const ejsMate =require("ejs-mate");
 const wrapAsync =require("./utils/wrapAsync.js");
 const ExpressError = require('./utils/ExpressError.js');
 const { listingSchema } = require('./schema.js');
+const Review = require("./models/review.js");
 
 const app = express();
 const port = 8080;
@@ -126,6 +127,19 @@ app.delete('/listings/:id',wrapAsync( async(req,res)=>{
     res.redirect("/listings")
 }));
 
+//Reviews
+//Post Route
+app.post('listings/:id/reviews',async (req,res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.boy.review);
+
+    listing.reviews.push(newReview);
+
+    await newReview.save();
+    await listing.save();
+
+    res.redirect(`/listings/${listing_id}`)
+});
 
 app.get('/', (req, res) => {                                  // App root url
     res.send("root is working");
