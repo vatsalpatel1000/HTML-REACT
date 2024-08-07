@@ -33,7 +33,7 @@ app.get('/api',checktoken ,(req,res)=>{
 
 
 // Default status and Message
-app.get('/err',(erq,res)=>{
+app.get('/err',(req,res)=>{
     abcd = abcd;
     next(err);
 });
