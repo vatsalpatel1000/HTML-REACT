@@ -2,11 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require("method-override");
-const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
-const ejsMate =require("ejs-mate");
-const Review = require("./models/review.js");
+const ExpressError = require('./utils/ExpressError.js');
+const ejsMate = require("ejs-mate");
+// const Chat = require('../../DAY - 40/NODE WITH MONGODB/models/chat');
+// const Review = require("./models/review.js");
+// const router = express.Router();
+// const wrapAsync = require("../utils/wrapAsync.js");
+// const { listingSchema,reviewSchema } = require('../schema.js');
+// const Listing = require("../models/listing.js");
 
 const listings = require("./routes/listing.js");
+const reviews = require("./routes/reviews .js");
+
 
 const app = express();
 const port = 8080;
@@ -32,44 +39,8 @@ main()
     }
 
 
-
-
-const validateReview = ( req, res, next ) =>{
-    let {error} = reviewSchema.validate(req.body);                      // Server side validation using joi  
-    console.log(error);
-    if(error){
-        let errMsg = error.details.map((el) => el.message ).join(",");
-        throw new ExpressError(400, errMsg );
-    }else{
-        next();
-    }
-} 
-
-app.use("/listings",listings);
-
-//Reviews
-//Post Review Route
-app.post('listings/:id/reviews',validateReview , wrapAsync(async (req,res) => {
-    let listing = await Listing.findById(req.params.id);
-    let newReview = new Review(req.boy.review);
-
-    listing.reviews.push(newReview);
-
-    await newReview.save();
-    await listing.save();
-
-    res.redirect(`/listings/${listing_id}`)
-}));
-
-//Delete Review route
-app.delete('listings/:id/reviews/:reviewId',wrapAsync(async(req,res)=>{
-    let { id, reviewId } = req.params;
-
-    await Listing.findByIdAndUpdate(id, { $pull: {reviews: reviewId }});       // Pull = DELETE
-    await Review.findByIdAndDelete(reviewId);
-
-    res.redirect(`/listings/${id}`);
-}));
+app.use("/listings",listings);                                 // Restructuring listings
+app.use("/listings/:id/reviews",reviews);                      // Restructuring reviews
 
 app.get('/', (req, res) => {                                  // App root url
     res.send("root is working");
