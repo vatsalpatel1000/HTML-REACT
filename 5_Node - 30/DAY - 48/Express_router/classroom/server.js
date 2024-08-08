@@ -3,10 +3,6 @@ const app = express();
 const users = require("./routes/users.js");
 const posts = require("./routes/posts.js");
 
-app.get("/",(req,res)=>{
-    res.send("HI, i m root");
-});
-
 app.use("/users",users);
 app.use("/posts",posts);
 

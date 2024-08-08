@@ -18,7 +18,7 @@ router.post('/',(req,res)=>{
 });
 
 //Delete - users
-router.Delete('/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     res.send("Delete user id ")
 });
 
