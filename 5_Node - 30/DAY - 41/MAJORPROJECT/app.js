@@ -10,6 +10,10 @@ const ejsMate = require("ejs-mate");
 // const wrapAsync = require("../utils/wrapAsync.js");
 // const { listingSchema,reviewSchema } = require('../schema.js');
 // const Listing = require("../models/listing.js");
+const session = require("express-session");
+
+app.use(session({secret : "mysupersecretstring", resave : false , saveUninitialized : true }));        //  session as a middleware after that all request has their own session_id and value 
+app.use(flash());
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/reviews .js");
