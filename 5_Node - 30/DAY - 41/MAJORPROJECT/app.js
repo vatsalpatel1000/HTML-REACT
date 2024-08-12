@@ -12,7 +12,16 @@ const ejsMate = require("ejs-mate");
 // const Listing = require("../models/listing.js");
 const session = require("express-session");
 
-app.use(session({secret : "mysupersecretstring", resave : false , saveUninitialized : true }));        //  session as a middleware after that all request has their own session_id and value 
+app.use(session({                                   // cookie
+    secret : "mysupersecretstring",
+    resave : false ,
+    saveUninitialized : true,
+    cookie : {                                              // save session id and password in cookie for limited time 
+        expire :  Date.now() + 7 * 24 * 60 * 60 * 1000,     // days * hr * minutes * sec * mili-sec
+        maxAge : 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true                                      // http website
+    },
+}));        //  session as a middleware after that all request has their own session_id and value 
 app.use(flash());
 
 const listings = require("./routes/listing.js");
