@@ -21,7 +21,7 @@ app.use(session({                                   // cookie
         maxAge : 7 * 24 * 60 * 60 * 1000,
         httpOnly: true                                      // http website
     },
-}));        //  session as a middleware after that all request has their own session_id and value 
+}));                                                        //  session as a middleware after that all request has their own session_id and value 
 app.use(flash());
 
 const listings = require("./routes/listing.js");
