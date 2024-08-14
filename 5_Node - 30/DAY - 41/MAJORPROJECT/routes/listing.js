@@ -37,6 +37,10 @@ router.get('/new',(req,res)=>{
 router.get('/:id',wrapAsync(async(req,res)=>{
     let {id} = req.params;
     const listing =  await Listing.findById(id).populate("reviews");
+    if(!listing){                                                   // flash msg faliure if listing not exist
+        req.flash("error","listing does not exist!");
+        res.redirect("listings");
+    }
     res.render("listings/show.ejs", {listing})
 }));
 
@@ -73,6 +77,7 @@ router.post("/",validateListing,wrapAsync( async(req,res,next)=>{               
     // OR We can do 
             const newListing = new Listing(req.body.listing);       // listing[] => title, desctiption ,price,country
             await newListing.save();
+            req.flash("success","New Listing Created!")             // flash msg created
             res.redirect("/listings");
     }));
     
@@ -80,6 +85,10 @@ router.post("/",validateListing,wrapAsync( async(req,res,next)=>{               
     router.get("/:id/edit",wrapAsync( async (req, res) => {
         let { id } = req.params;
         const listing = await Listing.findById(id);
+        if(!listing){                                                   // flash msg faliure if listing not exist
+            req.flash("error","listing does not exist!");
+            res.redirect("/listings");
+        }
         res.render("listings/edit.ejs", { listing });
     }));
     
@@ -89,7 +98,8 @@ router.post("/",validateListing,wrapAsync( async(req,res,next)=>{               
             throw new ExpressError(404, "Send valid data for listing");
         }
         let { id } = req.params;
-        Listing.findByIdAndUpdate(id, {...req.body.listing})
+        Listing.findByIdAndUpdate(id, {...req.body.listing});
+        req.flash("success","Listing Update");                      // flash msg createn for update listing
         res.render("/listings");
     }));
     
@@ -98,6 +108,7 @@ router.post("/",validateListing,wrapAsync( async(req,res,next)=>{               
         let { id } = req.params;
         let deletelisting = await Listing.findByIdAndDelete(id);
         console.log(deletelisting);
+        req.flash("success","Listing Delete");                      // flash msg createn for delete listing               
         res.redirect("/listings")
     }));
     

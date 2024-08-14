@@ -11,18 +11,11 @@ const ejsMate = require("ejs-mate");
 // const { listingSchema,reviewSchema } = require('../schema.js');
 // const Listing = require("../models/listing.js");
 const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStratagy = require("passport-local"); 
+const User = require("./models/user.js")
 
-app.use(session({                                   // cookie
-    secret : "mysupersecretstring",
-    resave : false ,
-    saveUninitialized : true,
-    cookie : {                                              // save session id and password in cookie for limited time 
-        expire :  Date.now() + 7 * 24 * 60 * 60 * 1000,     // days * hr * minutes * sec * mili-sec
-        maxAge : 7 * 24 * 60 * 60 * 1000,
-        httpOnly: true                                      // http website
-    },
-}));                                                        //  session as a middleware after that all request has their own session_id and value 
-app.use(flash());
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/reviews .js");
@@ -52,12 +45,41 @@ main()
     }
 
 
-app.use("/listings",listings);                                 // Restructuring listings
-app.use("/listings/:id/reviews",reviews);                      // Restructuring reviews
+    app.use(session({                                   // cookie
+        secret : "mysupersecretstring",
+        resave : false ,
+        saveUninitialized : true,
+        cookie : {                                              // save session id and password in cookie for limited time 
+            expire :  Date.now() + 7 * 24 * 60 * 60 * 1000,     // days * hr * minutes * sec * mili-sec
+            maxAge : 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true                                      // http website
+        },
+    }));                                                        //  session as a middleware after that all request has their own session_id and value 
+    
+app.use(flash());
+app.use(passport.initialize());    
+app.use(passport.session());
+passport.use(new LocalStratagy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get('/', (req, res) => {                                  // App root url
     res.send("root is working");
 });
+
+
+app.use((req,res,next)=>{                                     // flash msg create for add listing
+    res.locals.success = req.flash("success");                //
+    res.locals.error = req.flash("error");
+    console.log(log.locals.success);
+    next();
+});
+
+app.use("/listings",listings);                                 // Restructuring listings
+app.use("/listings/:id/reviews",reviews);                      // Restructuring reviews
+
+
 
 app.all('*',(req,res,next)=>{
     next( new ExpressError(404,'page Not found'))             // Create custom error for new page 
