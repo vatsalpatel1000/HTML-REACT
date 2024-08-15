@@ -24,7 +24,6 @@ const userRouter = require("./routes/user.js");
 
 const _ = require('passport-local-mongoose');
 
-
 main()
     .then(() => {
         console.log("Connection successful");
@@ -38,19 +37,17 @@ main()
 
     }
 
+app.use(session({                                   // cookie session created
+    secret : "mysupersecretstring",
+    resave : false ,
+    saveUninitialized : true,
+    cookie : {                                              // save session id and password in cookie for limited time 
+        expire :  Date.now() + 7 * 24 * 60 * 60 * 1000,     // days * hr * minutes * sec * mili-sec
+        maxAge : 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true                                      // http website
+    },
+}));                                                        //  session as a middleware after that all request has their own session_id and value 
 
-    app.use(session({                                   // cookie session created
-        secret : "mysupersecretstring",
-        resave : false ,
-        saveUninitialized : true,
-        cookie : {                                              // save session id and password in cookie for limited time 
-            expire :  Date.now() + 7 * 24 * 60 * 60 * 1000,     // days * hr * minutes * sec * mili-sec
-            maxAge : 7 * 24 * 60 * 60 * 1000,
-            httpOnly: true                                      // http website
-        },
-    }));                                                        //  session as a middleware after that all request has their own session_id and value 
-    
-    
 const app = express();
 const port = 8080;
 
@@ -61,12 +58,11 @@ app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs",ejsMate);                                                  //  use for layout include 
 
-
 app.use(flash());
 app.use(passport.initialize());                                 // passport create default / automatic username for DB when connection established
 app.use(passport.session());
-passport.use(new LocalStratagy(User.authenticate()));           // all user are authenticate using LocalStratagy
 
+passport.use(new LocalStratagy(User.authenticate()));           // all user are authenticate using LocalStratagy
 passport.serializeUser(User.serializeUser());                   // store user data in session
 passport.deserializeUser(User.deserializeUser());               // Unstore user data from session
 
@@ -81,17 +77,18 @@ app.use((req,res,next)=>{                                     // flash msg creat
     next(); 
 });
 
-app.get("/demouser",async(req,res)=>{                         // passport automatic check user is register or not 
-    let fakeUser = new User ({
-        email : "student@gmail.com",
+app.get("/demouser",async(req,res)=>{                         // Demo user create
+    let fakeUser = new User ({                                // passport automatic check user is register or not       
+        email : "student@gmail.com",    
         username : "delta_student" 
     });
     let registerUser = await User.register(fakeUser, "helloworld");         // register is tatic method of passport                    
     res.send(registerUser);
 });
 
-app.use("/listings",listings);                                 // Restructuring listings
-app.use("/listings/:id/reviews",reviews);                      // Restructuring reviews
+app.use("/listings",listingRouter);                                 // Restructuring listings
+app.use("/listings/:id/reviews",reviewRouter);                      // Restructuring reviews
+app.use("/",userRouter);
 
 app.all('*',(req,res,next)=>{
     next( new ExpressError(404,'page Not found'))             // Create custom error for new page 
