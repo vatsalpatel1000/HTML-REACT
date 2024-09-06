@@ -10,13 +10,11 @@ const ejsMate = require("ejs-mate");
 // const wrapAsync = require("../utils/wrapAsync.js");
 // const { listingSchema,reviewSchema } = require('../schema.js');
 // const Listing = require("../models/listing.js");
-
 const session = require("express-session");
 const flash = require("connect-flash");
-const passport = require("passport");               // passport is used for hashing & saulting for auithentication
+const passport = require("passport");                       // passport is used for hashing & saulting for auithentication
 const LocalStratagy = require("passport-local"); 
 const User = require("./models/user.js");
-
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/reviews .js");
@@ -37,7 +35,7 @@ main()
 
     }
 
-app.use(session({                                   // cookie session created
+app.use(session({                                           // cookie session created
     secret : "mysupersecretstring",
     resave : false ,
     saveUninitialized : true,
@@ -56,9 +54,9 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));
-app.engine("ejs",ejsMate);                                                  //  use for layout include 
+app.engine("ejs",ejsMate);                                      //  use for layout include 
 
-app.use(flash());
+app.use(flash());                                               // flash middleware
 app.use(passport.initialize());                                 // passport create default / automatic username for DB when connection established
 app.use(passport.session());
 
@@ -66,42 +64,42 @@ passport.use(new LocalStratagy(User.authenticate()));           // all user are 
 passport.serializeUser(User.serializeUser());                   // store user data in session
 passport.deserializeUser(User.deserializeUser());               // Unstore user data from session
 
-app.get('/', (req, res) => {                                  // App root url
+app.get('/', (req, res) => {                                    // App root url
     res.send("root is working");
 });
 
-app.use((req,res,next)=>{                                     // flash msg create for add listing
-    res.locals.success = req.flash("success");                //flash msg for error occer
+app.use((req,res,next)=>{                                       // flash msg create for add listing
+    res.locals.success = req.flash("success");                  // flash msg for error occer
     res.locals.error = req.flash("error");
     console.log(log.locals.success);
     next(); 
 });
 
-app.get("/demouser",async(req,res)=>{                         // Demo user create
-    let fakeUser = new User ({                                // passport automatic check user is register or not       
-        email : "student@gmail.com",    
-        username : "delta_student" 
-    });
-    let registerUser = await User.register(fakeUser, "helloworld");         // register is tatic method of passport                    
-    res.send(registerUser);
-});
+// app.get("/demouser",async(req,res)=>{                           // Demo user create
+//     let fakeUser = new User ({                                  // passport automatic check user is register or not       
+//         email : "student@gmail.com",    
+//         username : "delta_student" 
+//     });
+//     let registerUser = await User.register(fakeUser, "helloworld");         // register is tatic method of passport                    
+//     res.send(registerUser);
+// });
 
 app.use("/listings",listingRouter);                                 // Restructuring listings
 app.use("/listings/:id/reviews",reviewRouter);                      // Restructuring reviews
 app.use("/",userRouter);
 
 app.all('*',(req,res,next)=>{
-    next( new ExpressError(404,'page Not found'))             // Create custom error for new page 
+    next( new ExpressError(404,'page Not found'))                   // Create custom error for new page 
 });
 
-app.use(( err,req,res,next )=>{                               // Middleware create for custome error handler for try-catch / wrapAsync 
+app.use(( err,req,res,next )=>{                                     // Middleware create for custome error handler for try-catch / wrapAsync 
     let{statusCode = 500, message = 'Something went wrong!' } = err;
     res.status(statusCode).render("error.ejs", {message});
     //res.status(statusCode).send(message);
     //res.send("something went wrong")
 });
 
-app.listen(8080, () => {                                      // App Listining port
+app.listen(8080, () => {                                            // App Listining port
     console.log("Example app listening on port 8080");
 });
 
