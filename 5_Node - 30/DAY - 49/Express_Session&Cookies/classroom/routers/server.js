@@ -21,7 +21,7 @@ app.get("/register",(req,res)=>{
     res.session.name = name;
     req.flash("success","user register succesfull");            // key and value to print flash msg
     if (name === "anonymous"){
-        req.flsh("error","user not registered");
+        req.flash("error","user not registered");
     }else{
         req.flash("success","user registered successfully!");
     }
