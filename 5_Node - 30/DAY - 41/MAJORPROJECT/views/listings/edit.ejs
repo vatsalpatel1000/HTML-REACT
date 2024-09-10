@@ -5,7 +5,7 @@
 
     <h3> Edit listing </h3>
     <br/><br/>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate>       <!-- Validation according to bootstrap-->
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" enctype="multipart/form-data" novalidate>       <!-- Validation according to bootstrap-->
         <div class="mb-3">
             <label for="title" class="form-label">title </label>
             <input name ='listing[title]' value = <%=  listing.title %> type="text" class="form-control" required/>       <!-- listing[]  = title, desctiption ,price,country all types are store in this -->
@@ -19,6 +19,11 @@
             <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
         
+        <div class="mb-3">
+            Orignal listing Image <br>
+            <!-- <img src ="<%= // listing.image.url %>"> -->
+            <img src ="<%= orignalImgaeUrl %>">
+            </div>
 
         <div class="mb-3">
             <label for="image" class="form-label">image </label>

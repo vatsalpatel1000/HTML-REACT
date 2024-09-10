@@ -77,17 +77,27 @@ Module.exports.renderEditForm  = async (req, res) => {
             req.flash("error","listing does not exist!");
             res.redirect("/listings");
         }
+
+        let orignalimageUrl = listing.image.url;
+        orignalimageUrl = orignalImageUrl.replace("/upload","/upload/h_300,w_250");
         res.render("listings/edit.ejs", { listing });
     }
-    
 
-    
+
+
 Module.exports.updateListing  =  async (req,res)=>{
         if(!req.body.listing){
             throw new ExpressError(404, "Send valid data for listing");
         }
         let { id } = req.params;
-        await Listing.findByIdAndUpdate(id, {...req.body.listing});
+        let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+
+        if(typeof req.file !== "undefined"){
+        let url = req.file.path;
+        let filename = req.file.filename;
+        listing.image = { url, filename };
+        await listing.save();
+    }
         req.flash("success","Listing Update");                      // flash msg createn for update listing
         res.redirect(`/listings/${id}`);
     }
