@@ -55,11 +55,15 @@ Module.exports.createListing  = async(req,res,next)=>{                  // Creat
     
     //     newchat.save()      
     //     res.redirect("/listings");
-    // })
+    // })   
     // OR We can do 
+            let url = req.file.path;
+            let filename = req.file.filename;
+            console.log(url, "..", filename );   
             const newListing = new Listing(req.body.listing);       // listing[] => title, desctiption ,price,country
             console.log(req.user);
             newListing.owner= req.user.id;                          // show owner of property and vills
+            newListing.image = {url, filename};
             await newListing.save();
             req.flash("success","New Listing Created!")             // flash msg created
             res.redirect("/listings");

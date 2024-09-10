@@ -9,9 +9,13 @@ const listingSchema = new Schema({
     } ,
     description : String,  
     image :{ 
-        type : String,
-        default : "https://rb.gy/bhbpss",
-        set : (v) => v === "" ? "https://rb.gy/bhbpss" : v, // turnery operator  it set => if v === null ,if null set URL 
+        // type : String,
+        // default : "https://rb.gy/bhbpss",
+        // set : (v) => v === "" ? "https://rb.gy/bhbpss" : v, // turnery operator  it set => if v === null ,if null set URL 
+        url: String,
+        filename : String,
+        
+
     },
     price : Number,
     location : String,
