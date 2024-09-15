@@ -43,8 +43,13 @@ const listingSchema = new Schema({
         coordinates:{
             type : [Number],
             required : true
-        }
-    }
+        },
+    },
+    coordinates:{
+        type : [Number],
+        enum :["mountains", "arctic","farms","deserts"],
+        required:true,
+    },
 }
 );
 

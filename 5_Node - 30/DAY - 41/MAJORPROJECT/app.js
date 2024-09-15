@@ -2,7 +2,7 @@ if(process.env.NODE_ENV != "production"){
     require('dotenv').config();
 }
 console.log(process.env.SECRET);
-
+const dbUrl= process.env.ATLASDB_URL;
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -37,9 +37,20 @@ main()
     });
 
     async function main(){
-        await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust' ,  { useNewUrlParser: true, useUnifiedTopology: true });
-
+        await mongoose.connect(dbUrl ,  { useNewUrlParser: true, useUnifiedTopology: true });
     }
+
+const store = MongoStore.create({
+    mongoUrl : dbUrl,
+    crypto : {
+        secret: "mysupersecretcode"
+    },
+    touchAfter : 24 * 3600,
+});
+
+store.on("error",() =>{
+    console.log("ERROR in MONGO SESSION STORE", err);
+});
 
 app.use(session({                                           // cookie session created
     secret : "mysupersecretstring",
@@ -70,9 +81,9 @@ passport.use(new LocalStratagy(User.authenticate()));           // all user are 
 passport.serializeUser(User.serializeUser());                   // store user data in session
 passport.deserializeUser(User.deserializeUser());               // Unstore user data from session
 
-app.get('/', (req, res) => {                                    // App root url
-    res.send("root is working");
-});
+// app.get('/', (req, res) => {                                    // App root url
+//     res.send("root is working");
+// });
 
 app.use((req,res,next)=>{                                       // flash msg create for add listing
     res.locals.success = req.flash("success");                  // flash msg for error occer
@@ -87,7 +98,7 @@ app.use((req,res,next)=>{                                       // flash msg cre
 //         email : "student@gmail.com",    
 //         username : "delta_student" 
 //     });
-//     let registerUser = await User.register(fakeUser, "helloworld");         // register is tatic method of passport                    
+//     let registerUser = await User.register(fakeUser, "helloworld");         // register is static method of passport                    
 //     res.send(registerUser);
 // });
 
