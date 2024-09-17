@@ -23,7 +23,13 @@ Module.exports.renderNewForm =  (req,res)=>{
 
 Module.exports.showListing = async(req,res)=>{
     let {id} = req.params;
-    const listing =  await Listing.findById(id).populate({path : "reviews",populate : {path : "auther",},}).populate("owner");
+    const listing =  await Listing.findById(id)
+    .populate({                                                     // Print Auther name with its review
+        path : "reviews",populate : {
+            path : "auther",
+        },
+    })
+    .populate("owner");
     if(!listing){                                                   // flash msg faliure if listing not exist
         req.flash("error","listing does not exist!");
         res.redirect("listings");
@@ -72,9 +78,9 @@ Module.exports.createListing  = async(req,res,next)=>{                  // Creat
             let url = req.file.path;
             let filename = req.file.filename;
             console.log(url, "..", filename );   
-            const newListing = new Listing(req.body.listing);       // listing[] => title, desctiption ,price,country
-            console.log(req.user);
-            newListing.owner= req.user.id;                          // show owner of property and vills
+            const newListing = new Listing(req.body.listing);           // listing[] => title, desctiption ,price,country
+            console.log(req.user);                                      // it will print listing user all info
+            newListing.owner = req.user._id;                            // show owner of property and vills
             newListing.image = {url, filename};
 
             newListing.geometry = response.body.feature[0].geometry;

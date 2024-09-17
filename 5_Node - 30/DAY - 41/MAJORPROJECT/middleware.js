@@ -5,10 +5,10 @@ const ExpressError = require('./utils/ExpressError.js');
 
 
 module.exports.isLoggedIn = (req, res, next) => {
-    // console.log(req.path, "..", req.originalUrl);               // it give current hit and origanl url 
-    if(!req.isAuthenticated()){
+    // console.log(req.path, "..", req.originalUrl);               // it give current hit and origanl url before login
+    if(!req.isAuthenticated()){                                    // If User is not register
         //redirectUrl save
-        req.session.redirectUrl = req.originalUrl;
+        req.session.redirectUrl = req.originalUrl;                 // In req we have session obj where all req data stored related to session in this we will create new parameter and in that parameter store req.originalUrl (That is url before the login)
         req.flash("error","you must be logged in to create listing!");
         return res.redirect("/login");
     }
@@ -16,8 +16,8 @@ module.exports.isLoggedIn = (req, res, next) => {
 }
 
 module.exports.saveRedirectUrl = (req,res,next) => {
-    if(req.sessionredirectUrl){
-        res.locals.redirectUrl = req.session.redirectUrl;
+    if(req.session.redirectUrl){
+        res.locals.redirectUrl = req.session.redirectUrl;           // save req.session.redirectUrl to locals bcz that login passport will delete redirectUrl which we have create to goto same url after login but passport cant delete locals data
     }
     next();
 };

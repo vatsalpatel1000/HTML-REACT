@@ -19,7 +19,7 @@
         </div>
 </div>
 
-<% if(currUser && listing.owner._id.equals(currUser._id)){ %>
+<!-- <% if(currUser && listing.owner._id.equals(currUser._id)){ %>           it check is currentuser and listeing owner is same if same then owner can edit and delete listing  -->
 
 <div class="btns">
     <a href="/listings/<%= listing._id %>/edit" class ="btn btn-dark col-1 offset-3 edit-btn"> Edit </a><br/>
@@ -42,7 +42,7 @@
         <div class="card col-5 ms-3 mb-3">
         <fieldset class="starability-slot">
             <label for="comment" class="form-label">Rating</label>
-         
+
             <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
             <input type="radio" id="first-rate1" name="review[rating]" value="1" />
             <label for="first-rate1" title="Terrible">1 star</label>

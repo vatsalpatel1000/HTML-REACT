@@ -15,7 +15,7 @@ module.exports.rendersignupForm = async(req,res)=>{
             return next(err);
         }
         req.flash("success","Welcome to wanderlust");
-        res.redirect("/listings");
+        res.redirect("/listings");                          
     });
     }catch(error){
         req.flash("error",error.message);                   // error message in flash
@@ -29,8 +29,8 @@ module.exports.renderloginForm = (req,res)=>{
 
 module.exports.login =  async(req,res)=>{
     req.flash('success',"Welcome to wanderlust!");
-    let redirectUrl = res.locals.redirectUrl || "/listings";
-    res.redirect(redirectUrl);
+    let redirectUrl = res.locals.redirectUrl || "/listings";        // Home page not found 
+    res.redirect(redirectUrl);                              // redirectUrl
 }
 
 module.exports.logout =  (req, res, next)=>{
