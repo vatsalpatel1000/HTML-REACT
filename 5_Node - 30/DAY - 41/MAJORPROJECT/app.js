@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV != "production"){
     require('dotenv').config();
 }
-console.log(process.env.SECRET);
+// console.log(process.env.SECRET);
 const dbUrl= process.env.ATLASDB_URL;
 
 const express = require('express');
@@ -17,6 +17,7 @@ const ejsMate = require("ejs-mate");
 // const { listingSchema,reviewSchema } = require('../schema.js');
 // const Listing = require("../models/listing.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");                       // passport is used for hashing & saulting for auithentication
 const LocalStratagy = require("passport-local"); 
@@ -37,15 +38,16 @@ main()
     });
 
     async function main(){
+        //await mongoose.connect(mongodb://127.0.0.1:27017/wanderlust ,  { useNewUrlParser: true, useUnifiedTopology: true });
         await mongoose.connect(dbUrl ,  { useNewUrlParser: true, useUnifiedTopology: true });
     }
 
-const store = MongoStore.create({
+const store = MongoStore.create({           // Mongodb based session store  = express session is used in developement cant use in production     
     mongoUrl : dbUrl,
     crypto : {
-        secret: "mysupersecretcode"
+        secret: process.env.SECRET,
     },
-    touchAfter : 24 * 3600,
+    touchAfter : 24 * 3600,                 // For lazy update => if there is not update/change in browser and user only refresh pagen then data will upload after 24 hr. 
 });
 
 store.on("error",() =>{
@@ -53,7 +55,8 @@ store.on("error",() =>{
 });
 
 app.use(session({                                           // cookie session created
-    secret : "mysupersecretstring",
+    store,
+    secret : process.env.SECRET,
     resave : false ,
     saveUninitialized : true,
     cookie : {                                              // save session id and password in cookie for limited time 

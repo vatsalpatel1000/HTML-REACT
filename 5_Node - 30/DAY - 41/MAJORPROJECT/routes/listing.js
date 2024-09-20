@@ -4,14 +4,16 @@ const wrapAsync =require("../utils/wrapAsync.js");
 const Listing = require("../models/listing.js");
 const {isLoggedIn, isOwner,validateListing } = require("../middleware.js")
 const multer = require ("multer");                                      // it is used for media upload
+// const upload = multer({ dest : "uploads/"});                 // multer create automatic upload folder in local storage save for photos
+
 const {storage} = require("../cloudconfig.js")
-const upload = multer({storage});                              //  multer create automatic upload folder 
+const upload = multer({storage});                              //  multer upload photos in cloudinary storage 
 
 const listingController = require("../controllers/listing.js")
 
 router.route("/")
     .get(wrapAsync(listingController.index))                                                    //Index Route
-    .post(isLoggedIn, upload.single('listing[image]'), wrapAsync(listingController.createListing))               //Create Route
+    .post(isLoggedIn, upload.single("listing[image]"), wrapAsync(listingController.createListing))               //Create Route
     // .post( (req,res ) => {res.send(req.file )})
 
 //New Route
@@ -20,8 +22,8 @@ router.get('/new', isLoggedIn, listingController.renderNewForm);
 
 router.route("/:id")
     .get( wrapAsync(listingController.showListing))                                             //Show Route
-    .put( isLoggedIn,isOwner, validateListing,wrapAsync( listingController.updateListing))      //Update Route
-    .delete(isLoggedIn,isOwner, upload.single("listing[image]"), wrapAsync( listingController.destroyListing));                  //Delete Route
+    .put( isLoggedIn,isOwner, upload.single("listing[image]"), validateListing,wrapAsync( listingController.updateListing))      //Update Route
+    .delete(isLoggedIn,isOwner,  wrapAsync( listingController.destroyListing));                  //Delete Route
 
 //Index Route
 // router.get("/",wrapAsync(listingController.index));

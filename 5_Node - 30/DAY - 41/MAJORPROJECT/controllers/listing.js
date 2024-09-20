@@ -1,6 +1,7 @@
 const Listing = require("../models/listing");
-const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken = process.env_MAP_TOKEN;
+
+const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');       // install geocoding sdx from github
+const mapToken = process.env_MAP_TOKEN;                                      // get mapbox token
 const geocodingClient = mbxgeocoding({ accessToken: mapToken });
 
 
@@ -67,7 +68,7 @@ Module.exports.createListing  = async(req,res,next)=>{                  // Creat
     //     res.redirect("/listings");
     // })   
     // OR We can do 
-            let response = await geocodingClient.forwardGeocoding({
+            let response = await geocodingClient.forwardGeocoding({     // get code from github mapbox sdx document for forward geocoding
                 query : req.body.listing.location,
                 limit : 1, 
             })
@@ -75,16 +76,16 @@ Module.exports.createListing  = async(req,res,next)=>{                  // Creat
             // console.log(response.body.feature[0].geometry);
             // res.send("done!"); 
 
-            let url = req.file.path;
-            let filename = req.file.filename;
+            let url = req.file.path;                                    // for cloudnary pic save url store in mongo 
+            let filename = req.file.filename;                           // for photo name save in mongo
             console.log(url, "..", filename );   
+
             const newListing = new Listing(req.body.listing);           // listing[] => title, desctiption ,price,country
             console.log(req.user);                                      // it will print listing user all info
             newListing.owner = req.user._id;                            // show owner of property and vills
-            newListing.image = {url, filename};
 
-            newListing.geometry = response.body.feature[0].geometry;
-
+            newListing.image = {url, filename};                         // cloudnary pic url and filename store in listing image
+            newListing.geometry = response.body.feature[0].geometry;    // its gives logitude and latitude
             let savedListing = await newListing.save();
             console.log(savedListing);
 
@@ -101,8 +102,9 @@ Module.exports.renderEditForm  = async (req, res) => {
             res.redirect("/listings");
         }
 
-        let orignalimageUrl = listing.image.url;
-        orignalimageUrl = orignalImageUrl.replace("/upload","/upload/h_300,w_250");
+        let orignalimageUrl = listing.image.url;                        // reduce the image size or blue image => at the time of edit the image or change image we need previe image to change    
+        orignalimageUrl = orignalImageUrl.replace("/upload","/upload/h_300,w_250");             // redice size of image 
+
         res.render("listings/edit.ejs", { listing });
     }
 
@@ -115,7 +117,7 @@ Module.exports.updateListing  =  async (req,res)=>{
         let { id } = req.params;
         let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
 
-        if(typeof req.file !== "undefined"){
+        if( typeof req.file !== "undefined" ){
         let url = req.file.path;
         let filename = req.file.filename;
         listing.image = { url, filename };

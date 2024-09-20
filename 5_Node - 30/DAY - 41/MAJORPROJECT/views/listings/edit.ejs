@@ -22,12 +22,12 @@
         <div class="mb-3">
             Orignal listing Image <br>
             <!-- <img src ="<%= // listing.image.url %>"> -->
-            <img src ="<%= orignalImgaeUrl %>">
+            <img src ="<%= orignalImgaeUrl %>">                    <!--  reduced size of photos to preview old image at time of edit image   -->
             </div>
 
         <div class="mb-3">
             <label for="image" class="form-label">image </label>
-        <input name ='listing[image]' value = <%= listing.image %> type="text" class="form-control" />
+        <input name ='listing[image]' value = <%= listing.image %> type="file" class="form-control" />
         <div class ="invalid-feedback"> Please enter correct input </div>
         </div>
         

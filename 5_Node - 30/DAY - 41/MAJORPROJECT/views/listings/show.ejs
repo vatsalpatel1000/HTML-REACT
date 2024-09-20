@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate")%>
 <script>
-    const mapToken = " <%= process.env.MAP_TOKEN %>"; 
-    const listing = <%- JSON.stringify(listing) %>;
+    const MAP_TOKEN = " <%= process.env.MAP_TOKEN %> ";       // create it for script run from ejs file for map cz access token can directly call on ejs file it will call in js file only
+    const listing = " <%- JSON.stringify(listing) %> ";          
 </script>
 <div class="row mt-3">              <!-- mt-2 => margin top / a;ll content put in one div for center of then page-->
     <div class="col-8 offset-3">    <!-- offset => means from 12 box of grid left 2 div of starting-->
