@@ -1,6 +1,7 @@
 import "./App.css"
 //import {Title} from "./Title.jsx"
-import ProductTab from "./ProductTab.jsx"
+
+import MsgBox from "./MsgBox.jsx";
 
 
 // function Description() {
@@ -13,8 +14,7 @@ function App() {
   return (
 
       <>  
-
-        <ProductTab/>
+        <MsgBox userName="vatsal" textColor="pink"/>
       </>
 
       );
