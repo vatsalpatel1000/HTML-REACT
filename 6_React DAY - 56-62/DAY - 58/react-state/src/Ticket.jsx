@@ -1,12 +1,12 @@
 import TicketNum from "./TicketNum";
 import "./Ticket.css";
 
-export default function Ticket({ticket}) {
+export default function Ticket({ ticket }) {
     return(
-        <p>Ticket</p>
         <div className = "Ticket">
-          {ticket.map((num,idx) => {
-            <TicketNum num = {num} key= {idx}/>
+          <p>Ticket</p>
+          { ticket.map((num, idx) => (
+            <TicketNum num = {num} key= {idx} />
           ))}
         </div>
     );

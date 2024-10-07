@@ -12,7 +12,7 @@ export default function Price( {oldPrice, newPrice} ) {
         borderBottomLeftRadius: " 14px",
     }
     return(
-        <div>
+        <div style = {styles}>
             <span style= { oldStyles }>{oldPrice}</span>
             &nbsp;&nbsp;&nbsp;
             <span style = {newStyles}>{newPrice}</span>

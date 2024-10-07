@@ -12,6 +12,6 @@ export default function Button(){
     return(
     <div>
         <button onClick = {printHello} >Click me </button>
-        <p onMouseOver  = {printbye}>vatsal</p>
+        <p onMouseOver  = {printbye}>vatsal</p>                 {/* mouserOver => onMouseOver */}
     </div>)
 } 

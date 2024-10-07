@@ -8,7 +8,8 @@ function genTcket(n){
 }
     
 function sum(arr){
-        return arr.reduce((sum ,curr) => sum + curr , 0);
+        return arr.reduce((sum ,curr) => 
+            sum + curr , 0);
 }
 
 export {genTcket , sum }
